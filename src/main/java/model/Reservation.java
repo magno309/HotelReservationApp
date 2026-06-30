@@ -1,5 +1,7 @@
 package model;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 
 public class Reservation {
@@ -34,9 +36,10 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return customer +
+        return customer + " reservation's:\n---------------------" +
                 "\n" + iRoom +
-                "\n checkInDate=" + checkInDate +
-                "\n checkOutDate=" + checkOutDate;
+                "\n checkInDate: " + DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(checkInDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate()) +
+                "\n checkOutDate: " + DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(checkOutDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate()) +
+                "\n---------------------";
     }
 }

@@ -33,12 +33,8 @@ public class ReservationService {
     }
 
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkIn, Date checkOut) {
-        for (Reservation reservation : reservations){
-            if(reservation.getiRoom().equals(room) &&
-                    reservation.getCheckInDate().before(checkOut) &&
-                    reservation.getCheckOutDate().after(checkIn)){
-                throw new IllegalArgumentException("Room is already booked for these dates.");
-            }
+        if(isRoomAvailable(room, checkIn, checkOut) == false){
+            throw new IllegalArgumentException("Room is already booked for these dates.");
         }
         Reservation newReservation = new Reservation(customer, room, checkIn, checkOut);
         this.reservations.add(newReservation);
@@ -48,9 +44,12 @@ public class ReservationService {
     public List<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         List<IRoom> result = new ArrayList<>();
 
-
-
-        return null;
+        for (IRoom room : rooms.values()) {
+            if (isRoomAvailable(room, checkInDate, checkOutDate)) {
+                result.add(room);
+            }
+        }
+        return result;
     }
 
     public List<Reservation> getCustomerReservations(Customer customer){
@@ -67,6 +66,21 @@ public class ReservationService {
         reservations.forEach(
                 reservation -> System.out.println(reservation.toString())
         );
+    }
+
+    public List<IRoom> getAllRooms() {
+        return rooms.values().stream().toList();
+    }
+
+    private boolean isRoomAvailable(IRoom room, Date checkInDate, Date checkOutDate) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getiRoom().equals(room) &&
+                    reservation.getCheckInDate().before(checkOutDate) &&
+                    reservation.getCheckOutDate().after(checkInDate)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

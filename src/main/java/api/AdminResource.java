@@ -36,14 +36,23 @@ public class AdminResource {
                     if(reservationService.addRoom(room)) {
                         System.out.println("Room " + room.getRoomNumber() + " added correctly!");
                     }else {
-                        System.out.println("Room " + room.getRoomNumber() + " already exist!");
+                        System.out.println("Room " + room.getRoomNumber() + " already exists!");
                     }
                 }
         );
     }
 
     public List<IRoom> getAllRooms() {
-        return null;
+        return reservationService.getAllRooms();
+    }
+
+    public void createACustomer(String email, String firstName, String lastName) {
+        boolean result = customerService.addCustomer(email, firstName, lastName);
+        if (result) {
+            System.out.println("Customer created correctly!");
+        } else {
+            System.out.println("Customer not created!");
+        }
     }
 
     public List<Customer> getAllCustomers(){

@@ -13,7 +13,7 @@ public class CustomerService {
     public boolean addCustomer(String email, String firstName, String lastName){
         try{
             if(customers.containsKey(email)){
-                System.out.println("Email already exist!");
+                System.out.println("Email already in use!");
                 return false;
             }
             Customer newCustomer = new Customer(firstName, lastName, email);

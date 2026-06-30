@@ -44,7 +44,7 @@ public class HotelResource {
         Customer selectedCustomer = customerService.getCustomer(customerEmail);
 
         if (selectedCustomer == null) {
-            System.out.println("Customer don't exist!");
+            System.out.println("Customer doesn't exist! Please create an account first.");
             return null;
         }
 
@@ -56,7 +56,7 @@ public class HotelResource {
         Customer selectedCustomer = customerService.getCustomer(customerEmail);
 
         if (selectedCustomer == null) {
-            System.out.println("Customer don't exist!");
+            System.out.println("Customer doesn't exist! Please create an account first.");
             return null;
         }
 
@@ -64,7 +64,7 @@ public class HotelResource {
     }
 
     public List<IRoom> findARoom (Date checkIn, Date checkOut) {
-        return null;
+        return reservationService.findRooms(checkIn, checkOut);
     }
 
 }
