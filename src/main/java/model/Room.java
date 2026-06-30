@@ -36,8 +36,7 @@ public class Room implements IRoom{
 
     @Override
     public String toString() {
-        return "Room: " + roomNumber + " - " + enumeration.message +
-                "\n Price: " + price;
+        return "Room: " + this.getRoomNumber() + " - " + this.getRoomType().message + " - " + "Price: " + this.getRoomPrice();
     }
 
     @Override
