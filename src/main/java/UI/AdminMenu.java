@@ -22,9 +22,8 @@ public class AdminMenu {
         return adminMenu;
     }
 
-    public void displayAdminMenu() {
+    public void displayAdminMenu(Scanner sc) {
         String option = "";
-        Scanner sc = new Scanner(System.in);
         while (!option.equals("6")) {
             System.out.println("Admin Menu");
             System.out.println("--------------------------------------------");

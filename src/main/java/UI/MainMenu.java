@@ -26,8 +26,7 @@ public class MainMenu {
         return mainMenu;
     }
 
-    public void displayMainMenu() {
-        Scanner sc = new Scanner(System.in);
+    public void displayMainMenu(Scanner sc) {
         String option = "";
         while (!option.equals("5")) {
             System.out.println("--------------------------------------------");
@@ -135,7 +134,7 @@ public class MainMenu {
                     hotelResource.createACustomer(email, firstName, lastName);
                     break;
                 case "4":
-                    adminMenu.displayAdminMenu();
+                    adminMenu.displayAdminMenu(sc);
                     break;
                 case "5":
                     System.out.println("Bye!");
