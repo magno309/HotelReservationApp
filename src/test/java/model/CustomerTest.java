@@ -25,6 +25,6 @@ public class CustomerTest {
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             Customer customer = new Customer(firstName, lastName, email);
         });
-        Assertions.assertTrue(exception.getMessage().contains("Error, invalid email!"));
+        Assertions.assertTrue(exception.getMessage().equals("Invalid email!"));
     }
 }
